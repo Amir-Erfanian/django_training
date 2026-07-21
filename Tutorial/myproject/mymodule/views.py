@@ -4,7 +4,10 @@ from django.shortcuts import render
 # Create your views here.
 
 def home(request):
-    return HttpResponse("Home Page")
+    context = {
+        'name' : 'amir'
+    }
+    return render(request,'mymodule/index.html', context)
 
 def show_user(request, user):
     return HttpResponse(f'hello {user}')
