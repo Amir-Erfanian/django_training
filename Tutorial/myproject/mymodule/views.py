@@ -1,13 +1,16 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-# Create your views here.
 
-def home(request):
+def index(request):
     context = {
         'name' : 'amir'
     }
     return render(request,'mymodule/index.html', context)
 
-def show_user(request, user):
-    return HttpResponse(f'hello {user}')
+
+def about(request):
+    return render(request, 'mymodule/about.html')
+
+def contact(request):
+    return render(request, 'mymodule/contact.html')

@@ -1,7 +1,8 @@
 from django.urls import path
-from . import views
+from mymodule import views
 
 urlpatterns = [
-    path('', views.home),
-    path('<user>', views.show_user)
+    path('', views.index) ,
+    path('about/', views.about),
+    path('contact/', views.contact)
 ]
