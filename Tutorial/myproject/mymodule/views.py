@@ -4,4 +4,7 @@ from django.shortcuts import render
 # Create your views here.
 
 def home(request):
-    return HttpResponse("hi")
+    return HttpResponse("Home Page")
+
+def show_user(request, user):
+    return HttpResponse(f'hello {user}')
