@@ -1,0 +1,121 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: #f5f7fb;
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    flex: 1;
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+    letter-spacing: .5px;
+}
+
+.card {
+    border: none;
+    border-radius: 14px;
+}
+
+.card-header {
+    border-bottom: none;
+}
+
+.table {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table td,
+.table th {
+    vertical-align: middle;
+}
+
+.btn {
+    border-radius: 8px;
+}
+
+.btn-sm {
+    min-width: 70px;
+}
+
+.form-control {
+    border-radius: 8px;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 .2rem rgba(13, 110, 253, .15);
+}
+
+footer {
+    margin-top: auto;
+}
+
+.alert {
+    border-radius: 10px;
+}
+
+h2,
+h3 {
+    font-weight: 700;
+}
+
+.table tbody tr:hover {
+    transform: scale(1.003);
+    transition: .15s;
+}
+
+.search-box {
+    max-width: 450px;
+}
+
+.empty-state {
+    padding: 40px;
+    text-align: center;
+    color: gray;
+}
+
+.action-buttons .btn {
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+
+.card-body p {
+    font-size: 1.05rem;
+}
+
+.card-body strong {
+    display: inline-block;
+    width: 80px;
+}
+
+@media (max-width:768px) {
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        margin-bottom: 5px;
+    }
+
+    .table {
+        font-size: .9rem;
+    }
+
+    .card-body strong {
+        width: auto;
+    }
+
+}

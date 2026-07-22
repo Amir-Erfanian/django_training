@@ -1,0 +1,79 @@
+{% extends "students/base.html" %}
+
+{% block title %}
+Student Details
+{% endblock %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-header">
+
+        <h3 class="mb-0">
+
+            {{ student.name }}
+
+        </h3>
+
+    </div>
+
+    <div class="card-body">
+
+        <p>
+
+            <strong>Name:</strong>
+
+            {{ student.name }}
+
+        </p>
+
+        <p>
+
+            <strong>Age:</strong>
+
+            {{ student.age }}
+
+        </p>
+
+        <p>
+
+            <strong>Email:</strong>
+
+            {{ student.email }}
+
+        </p>
+
+    </div>
+
+    <div class="card-footer">
+
+        <a
+            href="{% url 'student_update' student.id %}"
+            class="btn btn-warning">
+
+            Edit
+
+        </a>
+
+        <a
+            href="{% url 'student_delete' student.id %}"
+            class="btn btn-danger">
+
+            Delete
+
+        </a>
+
+        <a
+            href="{% url 'student_list' %}"
+            class="btn btn-secondary">
+
+            Back
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
