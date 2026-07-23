@@ -218,3 +218,34 @@ __marimo__/
 .streamlit/secrets.toml
 
 **/settings.py
+
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Environment variables
+.env
+
+# SQLite
+db.sqlite3
+
+# Static collected files
+staticfiles/
+
+# Media uploads
+media/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

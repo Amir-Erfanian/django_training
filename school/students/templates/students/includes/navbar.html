@@ -1,0 +1,59 @@
+{% url 'student_list' as student_list_url %}
+{% url 'student_create' as student_create_url %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold"
+           href="{{ student_list_url }}">
+            StudentMS
+        </a>
+
+        <button class="navbar-toggler"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbar">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse"
+             id="navbar">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+
+                    <a class="nav-link {% if request.path == student_list_url %}active{% endif %}"
+                       href="{{ student_list_url }}">
+                        Students
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link {% if request.path == student_create_url %}active{% endif %}"
+                       href="{{ student_create_url }}">
+                        Add Student
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="/admin/">
+                        Admin
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
