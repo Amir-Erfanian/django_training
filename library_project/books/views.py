@@ -15,6 +15,7 @@ from django.views.generic import (
 
 from .forms import BookForm
 from .models import Book
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class HomeView(TemplateView):
@@ -35,19 +36,22 @@ class BookDetailView(DetailView):
 
     context_object_name = "book"
 
-class BookCreateView(CreateView):
+
+class BookCreateView(LoginRequiredMixin, CreateView):
     model = Book
     form_class = BookForm
     template_name = "books/book_form.html"
     success_url = reverse_lazy("book-list")
-    
-class BookUpdateView(UpdateView):
+
+
+class BookUpdateView(LoginRequiredMixin, UpdateView):
     model = Book
     form_class = BookForm
     template_name = "books/book_form.html"
     success_url = reverse_lazy("book-list")
-    
-class BookDeleteView(DeleteView):
+
+
+class BookDeleteView(LoginRequiredMixin, DeleteView):
     model = Book
     template_name = "books/book_confirm_delete.html"
     success_url = reverse_lazy("book-list")

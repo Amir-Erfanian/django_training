@@ -24,13 +24,45 @@
             <a class="navbar-brand" href="/">
                 Library
             </a>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ms-auto">
+
+                {% if user.is_authenticated %}
+
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+
+                    <span class="nav-link">
+
+                        Hello {{ user.username }}
+
+                    </span>
+
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="/books/">Books</a>
+
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button class="btn btn-link nav-link" type="submit">
+                            Logout
+                        </button>
+                    </form>
+
                 </li>
+
+                {% else %}
+
+                <li class="nav-item">
+
+                    <a class="nav-link" href="{% url 'login' %}">
+
+                        Login
+
+                    </a>
+
+                </li>
+
+                {% endif %}
+
             </ul>
         </div>
     </nav>
