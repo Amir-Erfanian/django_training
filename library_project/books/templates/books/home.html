@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<div class="text-center">
+
+    <h1 class="display-4">
+
+        Library Management System
+
+    </h1>
+
+    <p class="lead">
+
+        Manage books, authors and categories.
+
+    </p>
+
+    <a class="btn btn-primary btn-lg" href="{% url 'book-list' %}">
+
+        Browse Books
+
+    </a>
+
+</div>
+
+{% endblock %}

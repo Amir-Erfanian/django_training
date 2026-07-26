@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}
+{{ book.title }}
+{% endblock %}
+{% block content %}
+
+<h1>
+    {{ book.title }}
+</h1>
+<hr>
+
+<p>
+    <strong>Author:</strong>
+    {{ book.author }}
+</p>
+<p>
+    <strong>Pages:</strong>
+    {{ book.pages }}
+</p>
+
+<p>
+    <strong>Price:</strong>
+    ${{ book.price }}
+</p>
+
+<p>
+    <strong>Published:</strong>
+    {{ book.published_date }}
+</p>
+
+<h4>
+    Categories
+</h4>
+
+<ul>
+
+    {% for category in book.categories.all %}
+
+    <li>
+        {{ category.name }}
+    </li>
+
+    {% empty %}
+
+    <li>
+        No categories
+    </li>
+
+    {% endfor %}
+
+</ul>
+
+<a href="{% url 'book-list' %}" class="btn btn-secondary">
+    Back
+</a>
+<a href="{% url 'book-edit' book.pk %}" class="btn btn-warning">
+    Edit
+</a>
+
+<a href="{% url 'book-delete' book.pk %}" class="btn btn-danger">
+    Delete
+</a>
+
+<a href="{% url 'book-list' %}" class="btn btn-secondary">
+    Back
+</a>
+{% endblock %}
