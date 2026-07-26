@@ -16,6 +16,23 @@ from django.views.generic import (
 from .forms import BookForm
 from .models import Book
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+from .forms import RegisterForm
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
+
+class RegisterView(CreateView):
+    form_class = RegisterForm
+    template_name = "registration/register.html"
+    success_url = reverse_lazy("home")
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        login(self.request, self.object)
+        return response
 
 
 class HomeView(TemplateView):
@@ -37,21 +54,31 @@ class BookDetailView(DetailView):
     context_object_name = "book"
 
 
-class BookCreateView(LoginRequiredMixin, CreateView):
+class BookCreateView(
+    PermissionRequiredMixin,
+    CreateView,
+):
+    permission_required = "books.add_book"
     model = Book
     form_class = BookForm
-    template_name = "books/book_form.html"
     success_url = reverse_lazy("book-list")
 
 
-class BookUpdateView(LoginRequiredMixin, UpdateView):
+class BookUpdateView(
+    UserPassesTestMixin,
+    UpdateView,
+):
+
     model = Book
-    form_class = BookForm
-    template_name = "books/book_form.html"
-    success_url = reverse_lazy("book-list")
+    fields = "__all__"
+    def test_func(self):
+        return self.request.user.is_staff
 
 
-class BookDeleteView(LoginRequiredMixin, DeleteView):
+class BookDeleteView(
+    PermissionRequiredMixin,
+    DeleteView,
+):
+    permission_required = "books.delete_book"
     model = Book
-    template_name = "books/book_confirm_delete.html"
     success_url = reverse_lazy("book-list")

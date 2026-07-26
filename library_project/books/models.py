@@ -33,6 +33,9 @@ class Book(models.Model):
 
     class Meta:
         ordering = ["title"]
+        permissions = [
+            ("publish_book", "Can publish book"),
+        ]
 
     def __str__(self):
         return self.title
