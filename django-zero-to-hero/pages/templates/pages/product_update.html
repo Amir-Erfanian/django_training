@@ -1,28 +1,42 @@
 {% extends "base.html" %}
 
 {% block title %}
-Update Product
+Update {{ product.name }}
 {% endblock %}
 
 {% block content %}
 
-<h1>Update Product</h1>
+<div class="card">
 
-<form method="POST">
-    {% csrf_token %}
+    <h1>
+        Update Product
+    </h1>
 
+    <p>
+        Editing:
+        <strong>{{ product.name }}</strong>
+    </p>
 
-    {{ form.as_p }}
+    <form method="POST">
 
-    <button type="submit">
-        Save Changes
-    </button>
+        {% csrf_token %}
 
-    <a href="{% url 'product-detail' product.id %}">
-        Cancel
-    </a>
+        {{ form.as_p }}
 
+        <div class="form-actions">
 
-</form>
+            <button type="submit" class="button button-primary">
+                Save Changes
+            </button>
+
+            <a href="{% url 'product-detail' product.id %}" class="button button-secondary">
+                Cancel
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
 
 {% endblock %}

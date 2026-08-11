@@ -1,9 +1,20 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{%block title%}
-ABOUT
-{%endblock%}
+{% block title %}
+About
+{% endblock %}
 
-{%block content%}
-<h1>About Page</h1>
-{%endblock%}
+{% block content %}
+
+<div class="card">
+
+    <h1>About</h1>
+
+    <p>
+        This application is being built
+        while learning Django.
+    </p>
+
+</div>
+
+{% endblock %}

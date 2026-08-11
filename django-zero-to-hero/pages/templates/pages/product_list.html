@@ -8,24 +8,68 @@ Products
 
 <h1>Products</h1>
 
-<ul>
+<div style="margin-bottom: 20px;">
 
-{% for product in products %}
+    <a href="{% url 'product-create' %}" class="button button-primary">
+        + Add Product
+    </a>
 
-    <li>
-        <a href="{% url 'product-detail' product.id %}">
+</div>
+
+
+{% if products %}
+
+<div class="products">
+
+    {% for product in products %}
+
+    <div class="product-card">
+
+        <h3>
             {{ product.name }}
-        </a>
+        </h3>
 
-        - ${{ product.price }}
-    </li>
+        <div class="price">
+            ${{ product.price }}
+        </div>
 
-{% empty %}
 
-    <li>No products found.</li>
+        <div class="buttons">
 
-{% endfor %}
+            <a href="{% url 'product-detail' product.id %}" class="button button-secondary">
+                View
+            </a>
 
-</ul>
+            <a href="{% url 'product-update' product.id %}" class="button button-primary">
+                Edit
+            </a>
+
+            <a href="{% url 'product-delete' product.id %}" class="button button-danger">
+                Delete
+            </a>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="card">
+
+    <p>
+        No products available.
+    </p>
+
+    <a href="{% url 'product-create' %}" class="button button-primary">
+        Create your first product
+    </a>
+
+</div>
+
+{% endif %}
 
 {% endblock %}
