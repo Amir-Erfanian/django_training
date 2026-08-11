@@ -8,14 +8,10 @@ from .models import Student
 
 def student_list(request):
     query = request.GET.get("q", "")
-
     students = Student.objects.all()
 
     if query:
-        students = students.filter(
-            Q(name__icontains=query)
-            | Q(email__icontains=query)
-        )
+        students = students.filter(Q(name__icontains=query) | Q(email__icontains=query))
 
     context = {
         "students": students,
@@ -123,33 +119,27 @@ def contact(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
-            messages.success(
-                request,
-                "Your message has been sent successfully."
-            )
+            messages.success(request, "Your message has been sent successfully.")
             form = ContactForm()
 
     else:
         form = ContactForm()
 
     return render(
-        request,"students/contact.html",
+        request,
+        "students/contact.html",
         {
             "form": form,
-        }
+        },
     )
+
 
 def feadback(request):
     if request.method == "POST":
         form = FeedbackForm(request.POST)
         if form.is_valid():
-            messages.success(
-                request,
-                "Your feadback is sent."
-            )
+            messages.success(request, "Your feadback is sent.")
             form = FeedbackForm()
     else:
         form = FeedbackForm()
-    return render(request, "students/feadback.html",{
-            "form": form
-        })
+    return render(request, "students/feadback.html", {"form": form})
