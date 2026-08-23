@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h1>Welcome to My Django Blog!</h1>
+
+{% if latest_posts %}
+<h2>Latest Posts</h2>
+{% for post in latest_posts %}
+<div class="post">
+    <h3><a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a></h3>
+    <p class="post-meta">
+        By {{ post.author }} | {{ post.created_at|date:"F d, Y" }}
+    </p>
+    <p>{{ post.content|truncatewords:30 }}</p>
+</div>
+{% endfor %}
+{% else %}
+<p>No posts available yet.</p>
+{% endif %}
+{% endblock %}

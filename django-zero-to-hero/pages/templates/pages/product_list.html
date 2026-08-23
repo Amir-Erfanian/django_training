@@ -5,26 +5,19 @@ Products
 {% endblock %}
 
 {% block content %}
-
 <h1>Products</h1>
-
 <div style="margin-bottom: 20px;">
-
     <a href="{% url 'product-create' %}" class="button button-primary">
         + Add Product
     </a>
-
 </div>
 
 
 {% if products %}
-
 <div class="products">
 
     {% for product in products %}
-
     <div class="product-card">
-
         <h3>
             {{ product.name }}
         </h3>
@@ -35,7 +28,6 @@ Products
 
 
         <div class="buttons">
-
             <a href="{% url 'product-detail' product.id %}" class="button button-secondary">
                 View
             </a>
@@ -67,9 +59,7 @@ Products
     <a href="{% url 'product-create' %}" class="button button-primary">
         Create your first product
     </a>
-
 </div>
 
 {% endif %}
-
 {% endblock %}

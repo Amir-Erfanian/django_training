@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ post.title }} - My Django Blog{% endblock %}
+
+{% block content %}
+<article>
+    <h1>{{ post.title }}</h1>
+    <p class="post-meta">
+        By {{ post.author }} | Published: {{ post.created_at|date:"F d, Y" }}
+        {% if post.updated_at != post.created_at %}
+        | Updated: {{ post.updated_at|date:"F d, Y" }}
+        {% endif %}
+    </p>
+
+    <div class="post-content">
+        {{ post.content|linebreaks }}
+    </div>
+
+    <a href="{% url 'post-list' %}">← Back to all posts</a>
+</article>
+{% endblock %}
