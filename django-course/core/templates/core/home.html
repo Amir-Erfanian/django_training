@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<h1>Welcome to my website, {{ name }}!</h1>
+
+<p>This is the home page.</p>
+
+<h2>My Skills</h2>
+
+<ul>
+    {% for skill in skills %}
+        <li>{{ skill }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
