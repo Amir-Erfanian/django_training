@@ -1,5 +1,5 @@
 from django import forms
-
+from .models import Post
 
 class ContactForm(forms.Form):
 
@@ -16,3 +16,8 @@ class ContactForm(forms.Form):
         label="Your Message",
         widget=forms.Textarea,
     )
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'content']
