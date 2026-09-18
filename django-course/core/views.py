@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from .forms import ContactForm
-
+from .models import Post
 
 def home(request):
+    posts = Post.objects.all()
     return render(request, 'core/home.html', {
         'name':'Amir',
+        'posts' : posts,
         "skills": [
             "Python",
             "Django",
