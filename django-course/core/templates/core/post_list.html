@@ -11,12 +11,17 @@ Posts
 {% for post in posts %}
 
     <article>
-    <h2>
-    <a href="{% url 'post_detail' post.id %}">
-        {{ post.title }}
-    </a>
-</h2>
+        <h2>
+            <a href="{% url 'post_detail' post.id %}">
+                {{ post.title }}
+            </a>
+        </h2>
+
         <p>{{ post.content }}</p>
+
+        <p>
+            Author: {{ post.author.username }}
+        </p>
 
         <small>
             Created: {{ post.created_at }}

@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ profile.user.username }}</h1>
+
+<p>
+    <strong>Bio:</strong>
+    {{ profile.bio }}
+</p>
+
+<p>
+    <strong>Location:</strong>
+    {{ profile.location }}
+</p>
+
+<p>
+    <strong>Website:</strong>
+    {{ profile.website }}
+</p>
+
+{% endblock %}
