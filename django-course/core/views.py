@@ -73,3 +73,34 @@ def post_detail(request, id):
     return render(request, 'core/post_detail.html', {
         'post': post,
     })
+
+def post_update(request, id):
+    post = get_object_or_404(Post, id=id)
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect('post_detail', id=post.id)
+
+    else:
+        form = PostForm(instance=post)
+
+    return render(request, 'core/post_update.html', {
+        'form': form,
+        'post': post,
+    })
+
+def post_delete(request, id):
+    post = get_object_or_404(Post, id=id)
+
+    if request.method == 'POST':
+        post.delete()
+
+        return redirect('post_list')
+
+    return render(request, 'core/post_delete.html', {
+        'post': post,
+    })
