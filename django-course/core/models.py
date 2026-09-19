@@ -11,6 +11,11 @@ class Profile(models.Model):
     bio = models.TextField(blank=True)
     location = models.CharField(max_length=100, blank=True)
     website = models.URLField(blank=True)
+    profile_image = models.ImageField(
+    upload_to='profiles/',
+    blank=True,
+    null=True,
+    )
 
     def __str__(self):
         return f"{self.user.username}'s Profile"

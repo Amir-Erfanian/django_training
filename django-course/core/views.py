@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import ContactForm, PostForm, RegisterForm
+from .forms import ContactForm, PostForm, RegisterForm, ProfileForm
 from .models import Post
 from django.contrib.auth.decorators import login_required
 
@@ -174,4 +174,25 @@ def profile(request):
     return render(request, 'core/profile.html', {
         'profile': request.user.profile,
         'posts': request.user.posts.all(),
+    })
+
+@login_required
+def profile_edit(request):
+    profile = request.user.profile
+
+    if request.method == 'POST':
+        form = ProfileForm(
+            request.POST,
+            request.FILES,
+            instance=profile,
+        )
+
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileForm(instance=profile)
+
+    return render(request, 'core/profile_edit.html', {
+        'form': form,
     })

@@ -11,6 +11,7 @@ from .views import (
     post_delete,
     register,
     profile,
+    profile_edit,
 )
 from django.contrib.auth import views as auth_views
 
@@ -38,5 +39,10 @@ urlpatterns = [
     'profile/',
     profile,
     name='profile',
+    ),
+    path(
+    "profile/edit/",
+    profile_edit,
+    name="profile_edit",
 ),
 ]
