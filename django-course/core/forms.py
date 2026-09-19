@@ -20,12 +20,10 @@ class ContactForm(forms.Form):
         widget=forms.Textarea,
     )
 
-
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ["title", "content"]
-
+        fields = ['title', 'content', 'categories']
 
 class RegisterForm(UserCreationForm):
     class Meta:

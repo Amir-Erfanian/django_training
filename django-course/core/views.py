@@ -67,26 +67,24 @@ def post_list(request):
 @login_required
 def post_create(request):
 
-    if request.method == "POST":
+    if request.method == 'POST':
         form = PostForm(request.POST)
 
-    if form.is_valid():
-        post = form.save(commit=False)
-        post.author = request.user
-        post.save()
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
 
-        return redirect("post_list")
+            form.save_m2m()
+
+            return redirect('post_list')
 
     else:
         form = PostForm()
 
-    return render(
-        request,
-        "core/post_create.html",
-        {
-            "form": form,
-        },
-    )
+    return render(request, 'core/post_create.html', {
+        'form': form,
+    })
 
 
 def post_detail(request, id):
@@ -175,4 +173,5 @@ def register(request):
 def profile(request):
     return render(request, 'core/profile.html', {
         'profile': request.user.profile,
+        'posts': request.user.posts.all(),
     })

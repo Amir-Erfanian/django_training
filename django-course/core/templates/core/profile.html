@@ -22,5 +22,23 @@ Profile
     <strong>Website:</strong>
     {{ profile.website }}
 </p>
+<h2>My Posts</h2>
 
+{% for post in posts %}
+
+    <article>
+        <h3>
+            <a href="{% url 'post_detail' post.id %}">
+                {{ post.title }}
+            </a>
+        </h3>
+
+        <p>{{ post.content }}</p>
+    </article>
+
+{% empty %}
+
+    <p>You haven't created any posts yet.</p>
+
+{% endfor %}
 {% endblock %}

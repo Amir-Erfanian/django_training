@@ -21,6 +21,7 @@
     <span>
         Hello, {{ user.username }}
     </span>
+    <a href='{% url "profile" %}'>Profile</a>
 
     <form method="POST" action="{% url 'logout' %}">
         {% csrf_token %}
